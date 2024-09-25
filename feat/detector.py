@@ -208,6 +208,7 @@ class Detector(object):
                             "mobilenet_224_model_best_gdconv_external.pth.tar",
                         ),
                         map_location=self.device,
+                        weights_only=True,
                     )
                     ##################################
                     state_dict = checkpoint["state_dict"]
@@ -229,6 +230,7 @@ class Detector(object):
                     checkpoint = torch.load(
                         os.path.join(get_resource_path(), "pfld_model_best.pth.tar"),
                         map_location=self.device,
+                        weights_only=True,
                     )
                     self.landmark_detector.load_state_dict(checkpoint["state_dict"])
                 elif landmark == "mobilefacenet":
@@ -240,6 +242,7 @@ class Detector(object):
                             get_resource_path(), "mobilefacenet_model_best.pth.tar"
                         ),
                         map_location=self.device,
+                        weights_only=True,
                     )
                     self.landmark_detector.load_state_dict(checkpoint["state_dict"])
             self.landmark_detector.eval()
