@@ -278,6 +278,7 @@ class InceptionResnetV1(nn.Module):
                         "facenet_20180402_114759_vggface2.pth",
                     ),
                     map_location=self.device,
+                    weights_only=True,
                 )
             )
         #   load_weights(self, pretrained)
